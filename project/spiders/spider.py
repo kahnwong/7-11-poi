@@ -25,7 +25,7 @@ class SevenElevenSpider(scrapy.Spider):
         }
 
         ### loop through centroids
-        df = pd.read_csv('../data/centroid-bma.csv')
+        df = pd.read_csv('../data/input/centroid-bma.csv')
         latitudes = df['Y'].tolist()
         longitudes = df['X'].tolist()
 
