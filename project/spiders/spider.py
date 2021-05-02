@@ -1,7 +1,7 @@
 import scrapy
 import json
 import pandas as pd
-
+from tqdm import tqdm
 
 class SevenElevenSpider(scrapy.Spider):
     name = "seven-eleven"
@@ -25,11 +25,17 @@ class SevenElevenSpider(scrapy.Spider):
         }
 
         ### loop through centroids
-        df = pd.read_csv('../data/input/centroid-bma.csv')
-        latitudes = df['Y'].tolist()
-        longitudes = df['X'].tolist()
+        df = pd.read_csv('data/input/hex-centroid-thailand-2.5km.csv')
 
-        for latitude, longitude in zip(latitudes, longitudes):
+        INCREMENT = 0
+        START_INDEX = 1000
+        END_INDEX = START_INDEX+INCREMENT
+        latitudes = df['Y'].tolist()[START_INDEX:END_INDEX]
+        longitudes = df['X'].tolist()[START_INDEX:END_INDEX]
+
+        print(f'START_INDEX: {START_INDEX}')
+
+        for latitude, longitude in tqdm(zip(latitudes, longitudes), total=INCREMENT):
             payload = {"latitude": latitude,
                        "longitude": longitude,
                          "products": []}

@@ -8,8 +8,12 @@ scrapy = "*"
 jupyterlab = "*"
 pandas = "*"
 numpy = "*"
+tqdm = "*"
 
 [dev-packages]
+geopandas = "*"
+matplotlib = "*"
+geoplot = "*"
 
 [requires]
 python_version = "3.9"
