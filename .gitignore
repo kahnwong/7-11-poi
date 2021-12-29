@@ -3,3 +3,4 @@
 *.jl
 *.geojson
 .ipynb_checkpoints/
+data
